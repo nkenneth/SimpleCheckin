@@ -1,7 +1,7 @@
 on: 
   push:
     branches:
-      - master
+      - main
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -15,5 +15,5 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
         server: ftp.miaorealty.com
-        username: group5@codedugout.com
+        username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
