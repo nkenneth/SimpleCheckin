@@ -34,7 +34,7 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <form class="login100-form validate-form">
+                <form class="login100-form validate-form" action="userprofile.html">
 
                     <img src="images/logo.png" alt="Logo" width="250px" class="login100-form-title p-b-43" />
                     <span class="login100-form-title p-b-43">
@@ -43,14 +43,14 @@
 
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" runat="server" />
+                        <input class="input100 email" type="text" id="email" name="email" />
                         <span class="focus-input100"></span>
                         <span class="label-input100">Email</span>
                     </div>
 
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" runat="server" />
+                        <input class="input100 password" type="password" id="password" name="pass" />
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password</span>
                     </div>
@@ -72,7 +72,7 @@
 
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
+                        <button class="login100-form-btn submitbtn">
                             Login
                         </button>
                     </div>
@@ -101,5 +101,13 @@
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
+    <script>
+        //var email = $('.email').val();
+        //var password = $('.password').val();
+        //$(".submitbtn").click(function () {
+        //    window.location.replace("http://stackoverflow.com");
+            
+        //});
+    </script>
 </body>
 </html>
