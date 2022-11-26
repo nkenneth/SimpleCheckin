@@ -2,8 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+    
     <title>User Profile</title>
     <style>
         body {
@@ -92,7 +94,7 @@
                                         <p class="text-secondary mb-1">Full Stack Developer</p>
                                         <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
 
-                                        <button class="btn btn-outline-primary">Logout</button>
+                                        <a href="index.html"><button class="btn btn-outline-primary" type="button">Logout</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +141,7 @@
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        fip@jukmuh.al
+                                        <span id="useremail"></span>
                                     </div>
                                 </div>
                                 <hr>
@@ -163,17 +165,16 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Address</h6>
+                                        <h6 class="mb-0">Status</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        Bay Area, San Francisco, CA
+                                        <span id="ctext" style="background-color:red; color:white;">Not checked in</span>  
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <asp:Button ID="Button1" CssClass="btn btn-info " runat="server" Text="Check in" />
-
+                                        <button class="btn btn-info btncheckin" onClick="CheckinUser();" type="button"> Check in </button>
                                     </div>
                                 </div>
                             </div>
@@ -244,5 +245,32 @@
             </div>
         </div>
     </form>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const email = urlParams.get('email');
+        const pass = urlParams.get('pass');
+
+        document.getElementById("useremail").textContent = email;
+
+        console.log(email);
+        console.log(pass);
+        function CheckinUser() {
+            swal("Good job!", "You clicked the button!", "success");
+        }
+        $(".btncheckin").click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date + ' ' + time;
+
+            swal("Good job!", "You have been checked in!", "success");
+            $("#ctext").html("Checked in: at " + dateTime);
+            $("#ctext").css("background-color", "green");
+
+        });
+
+    </script>
 </body>
 </html>
